@@ -15,6 +15,7 @@ import AppLoading from "expo-app-loading";
 
 // screen imports from ./screen
 import Login from "./app/screen/Login";
+import Checkout from "./app/screen/Checkout";
 import Home from "./app/screen/Home";
 import ProductDetails from "./app/screen/ProductDetails";
 
@@ -48,6 +49,7 @@ export default function App() {
             initialRouteName="Home"
             screenOptions={{ headerShown: false }}
           >
+            <Stack.Screen name="Checkout" component={Checkout} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="ProductDetails" component={ProductDetails} />

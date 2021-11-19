@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
-import { KeyboardAvoidingView, Text } from "react-native";
+import { KeyboardAvoidingView, Text, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 
@@ -37,7 +37,9 @@ const Login = () => {
   };
 
   return (
-    <SafeAreaView styles={{ flex: 1, position: "relative" }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: "white", position: "relative" }}
+    >
       {error.type && (
         <Alert
           screen={error.screen}
@@ -48,10 +50,20 @@ const Login = () => {
       <KeyboardAvoidingView behavior="padding">
         <StyledLogin>
           <StyledLoginText>
-            <StyledLoginTextMain>Welcome</StyledLoginTextMain>
-            <StyledLoginTextSub>To La Violette</StyledLoginTextSub>
+            <StyledLoginTextMain>Welcome To</StyledLoginTextMain>
+            <StyledLoginTextSub>Toronto</StyledLoginTextSub>
           </StyledLoginText>
-          <StyledLoginLogo source={require("../assets/logo.jpg")} />
+          <Image
+            style={{
+              width: 130,
+              height: 130,
+              marginBottom: 10,
+              borderRadius: 100,
+            }}
+            source={{
+              uri: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            }}
+          />
           <StyledLoginFields>
             <StyledInputs
               type="username"
@@ -67,7 +79,7 @@ const Login = () => {
           </StyledLoginFields>
           <StyledLoginBtns>
             <StyledButtons onPress={handleSignin}>
-              <StyledButtonValue>Sign in</StyledButtonValue>
+              <StyledButtonValue>SIGN IN</StyledButtonValue>
             </StyledButtons>
           </StyledLoginBtns>
         </StyledLogin>
@@ -84,47 +96,54 @@ const StyledLogin = styled.View`
 `;
 
 const StyledLoginLogo = styled.Image`
-  height: 70px;
-  width: 70px;
-  border-radius: 50px;
-  margin-bottom: 20%;
+  yle={{
+          width: 130PX;
+          height: 130PX;
+          marginBottom: 30;
+          borderRadius: 100;
 `;
 
 const StyledLoginText = styled.View`
-  margin-bottom: 20%;
+  margin-bottom: 5%;
   justify-content: center;
   align-items: center;
   text-align: center;
 `;
 
 const StyledLoginTextMain = styled.Text`
-  font-size: 20px;
-  color: #a1a1a1;
+  color: "rgba(0,0,0,0.8)";
+  font-size: 24px;
+  margin-top: 5%;
 `;
 
 const StyledLoginTextSub = styled.Text`
+  color: "black";
   font-size: 30px;
+  font-weight: 600;
 `;
 
 const StyledInputs = styled.TextInput`
-  width: 80%;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 5%;
-  width: 250px;
+  padding: 15px;
+  height: 40;
+  margin-bottom: 10px;
+  font-size: 15;
+  outline: 0;
+  width: 230;
+  margin-bottom: 10;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 
 const StyledButtons = styled.TouchableOpacity`
-  padding: 12px 100px;
-  border-radius: 8px;
+  padding: 10px 90px;
   margin-bottom: 10px;
-  background-color: #4285f4;
+  background-color: "rgb(100,255,45)";
 `;
 
 const StyledButtonValue = styled.Text`
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
+  font-weight: 700;
 `;
 
 const StyledLoginFields = styled.View``;

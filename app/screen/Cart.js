@@ -5,7 +5,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import uuid from "react-native-uuid";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import {
+  Feather,
+  MaterialIcons,
+  Ionicons,
+  AntDesign,
+  EvilIcons,
+} from "@expo/vector-icons";
 import { resetCart, updateTotal } from "../redux/actions/actions";
 import CartItems from "../components/CartItems";
 
@@ -37,7 +43,7 @@ const Cart = ({ navigation }) => {
   // dispatch(updateTotal({ subtotal, tax, total }));
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#f0f0f0" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <StyledCartHeader>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Feather name="chevron-left" size={24} color="black" />
@@ -45,11 +51,13 @@ const Cart = ({ navigation }) => {
         <View>
           <Image
             style={{ width: 35, height: 35, borderRadius: 50 }}
-            source={require("../assets/logo.jpg")}
+            source={{
+              uri: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            }}
           />
         </View>
         <TouchableOpacity onPress={() => dispatch(resetCart())}>
-          <MaterialIcons name="delete-outline" size={24} color="black" />
+          <AntDesign name="delete" size={20} color="red" />{" "}
         </TouchableOpacity>
       </StyledCartHeader>
       {cart.length > 0 ? (
@@ -175,6 +183,7 @@ const Cart = ({ navigation }) => {
                   borderRadius: 30,
                   width: "75%",
                 }}
+                onPress={() => navigation.navigate("Checkout")}
               >
                 <Ionicons
                   name="log-out-outline"

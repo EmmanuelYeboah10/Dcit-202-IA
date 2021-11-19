@@ -11,6 +11,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 
 import CategoryContainer from "../components/CategoryContainer";
@@ -18,7 +19,13 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 
 import { primaryColorDark, primaryColorLight } from "../helpers/Variables";
-import { Entypo, Feather, Ionicons } from "@expo/vector-icons";
+import {
+  Entypo,
+  Feather,
+  Ionicons,
+  AntDesign,
+  EvilIcons,
+} from "@expo/vector-icons";
 
 const Home = ({ navigation }) => {
   //state to store the api res data from the API
@@ -50,7 +57,12 @@ const Home = ({ navigation }) => {
   }, []);
 
   return (
-    <SafeAreaView style={(styles.container, { position: "relative" })}>
+    <SafeAreaView
+      style={
+        (styles.container,
+        { position: "relative", backgroundColor: "white", padding: 10 })
+      }
+    >
       <StyledHomeHeader>
         <TouchableOpacity
           style={{
@@ -63,15 +75,14 @@ const Home = ({ navigation }) => {
           }}
           onPress={() => setToggleMenu(!toggleMenu)}
         >
-          <Ionicons name="md-menu-outline" size={24} color="black" />
+          <AntDesign name="appstore1" size={20} color="rgba(0,0,0,0.8)" />
         </TouchableOpacity>
-        <StyledHomeLogo source={require("../assets/logo.jpg")} />
         <View>
           <TouchableOpacity
             onPress={() => navigation.navigate("Cart")}
             style={{ position: "relative" }}
           >
-            <Feather name="shopping-bag" size={24} color="black" />
+            <EvilIcons name="cart" size={24} color="black" />
             <View
               style={{
                 backgroundColor: `${primaryColorLight}`,
@@ -93,28 +104,127 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </StyledHomeHeader>
-      <StyledHomeHeading>
-        <Text
+
+      <View
+        style={{
+          flexDirection: "row",
+          marginBottom: 10,
+        }}
+      >
+        <View
           style={{
-            fontSize: 25,
-            fontFamily: "Zen-Bold",
-            color: `${primaryColorDark}`,
-            marginLeft: 20,
+            flexBasis: "15%",
+            alignItems: "center",
           }}
         >
-          Our Products
-        </Text>
-
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={{ color: "grey" }}>Sort by</Text>
-          <Entypo name="chevron-small-down" size={24} color="grey" />
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              backgroundColor: "white",
+              borderRadius: 50,
+              width: 50,
+              height: 50,
+              alignItems: "center",
+            }}
+          ></TouchableOpacity>
+          <Text
+            style={{
+              color: "rgba(0,0,0,0.8)",
+              fontSize: 10,
+              fontWeight: 900,
+              marginTop: 10,
+            }}
+          >
+            PARTY
+          </Text>
         </View>
-      </StyledHomeHeading>
-      <StyledHomeCateg>
-        {["All", "Adidas", "Nike", "Jordan"].map((brand, index) => (
-          <CategoryContainer index={index} name={brand} key={uuid.v4()} />
-        ))}
-      </StyledHomeCateg>
+
+        <View
+          style={{
+            flexBasis: "35%",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              backgroundColor: "white",
+              borderRadius: 100,
+              width: 50,
+              height: 50,
+              alignItems: "center",
+            }}
+            onPress={() => navigation.navigate("Classic")}
+          ></TouchableOpacity>
+          <Text
+            style={{
+              color: "rgba(0,0,0,0.8)",
+              fontSize: 10,
+              fontWeight: 900,
+              marginTop: 10,
+            }}
+          >
+            OUTING{" "}
+          </Text>
+        </View>
+        <View
+          style={{
+            flexBasis: "25%",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              backgroundColor: "white",
+              borderRadius: 100,
+              width: 50,
+              height: 50,
+              alignItems: "center",
+            }}
+            onPress={() => navigation.navigate("Sports")}
+          ></TouchableOpacity>
+          <Text
+            style={{
+              color: "rgba(0,0,0,0.8)",
+              fontSize: 10,
+              fontWeight: 900,
+              marginTop: 10,
+            }}
+          >
+            SPORTS
+          </Text>
+        </View>
+        <View
+          style={{
+            flexBasis: "33%",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              backgroundColor: "white",
+              borderRadius: 100,
+              width: 50,
+              height: 50,
+              alignItems: "center",
+            }}
+            onPress={() => navigation.navigate("Outdoor")}
+          ></TouchableOpacity>
+          <Text
+            style={{
+              color: "rgba(0,0,0,0.8)",
+              fontSize: 10,
+              fontWeight: 900,
+              marginTop: 10,
+            }}
+          >
+            CLASSIC
+          </Text>
+        </View>
+      </View>
+
       {products && products.length > 0 ? (
         <ScrollView>
           {products &&
@@ -143,17 +253,15 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: "#dfdfdf",
+    paddingHorizontal: 30,
   },
 });
 
 const StyledHomeHeader = styled.View`
-  flex-basis: 12%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding-right: 10px;
 `;
 
 const StyledHomeLogo = styled.Image`

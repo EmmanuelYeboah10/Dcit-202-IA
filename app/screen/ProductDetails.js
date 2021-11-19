@@ -3,7 +3,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Feather,
+  MaterialCommunityIcons,
+  AntDesign,
+  EvilIcons,
+} from "@expo/vector-icons";
 import { Text, TouchableOpacity, View, Image } from "react-native";
 import {
   primaryColor,
@@ -86,7 +91,7 @@ const ProductDetails = ({ route, navigation }) => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}
+      style={{ flex: 1, backgroundColor: "white", position: "relative" }}
     >
       {error.message && <Alert message={error.message} type={error.type} />}
       <StyledProductHeader>
@@ -96,16 +101,14 @@ const ProductDetails = ({ route, navigation }) => {
         <View>
           <Image
             style={{ width: 35, height: 35, borderRadius: 50 }}
-            source={require("../assets/logo.jpg")}
+            source={{
+              uri: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            }}
           />
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-          <Feather
-            style={{ position: "relative" }}
-            name="shopping-bag"
-            size={24}
-            color="black"
-          />
+          <EvilIcons name="cart" size={24} color="black" />
+
           <View
             style={{
               backgroundColor: `${primaryColorLight}`,
@@ -217,7 +220,6 @@ const ProductDetails = ({ route, navigation }) => {
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: "#fff",
-              borderTopLeftRadius: 30,
             }}
           >
             <Text
@@ -294,7 +296,7 @@ const StyledProductGenderText = styled.Text`
 const StyledProductImage = styled.View`
   flex-basis: 38%;
   justify-content: center;
-  background-color: #fff;
+  background-color: "white";
   align-items: center;
   padding: 10px;
 `;
@@ -304,7 +306,7 @@ const StyledProductName = styled.View`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: "white";
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 `;
@@ -313,20 +315,20 @@ const StyledProductSize = styled.View`
   flex-basis: 10%;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: #f0f0f0;
+  background-color: "white";
   align-items: center;
 `;
 
 const StyledProductSizeContainer = styled.TouchableOpacity`
-  background-color: #f0f0f0;
+  background-color: "white";
   padding: 10px 15px;
   background-color: ${(props) =>
-    props.active ? primaryColorLight : "#f0f0f0"};
-  border-radius: 10px;
+    props.active ? primaryColorLight : "#00FA9A"};
+  border-radius: 30px;
 `;
 
 const StyledProductColors = styled.View`
-  background-color: #f0f0f0;
+  background-color: "white";
   flex-basis: 10%;
   flex-direction: row;
   justify-content: space-evenly;
@@ -344,7 +346,6 @@ const StyledProductColor = styled.TouchableOpacity`
 const StyledProductPrice = styled.View`
   flex-direction: row;
   flex: 1;
-  border-top-right-radius: 20px;
   overflow: hidden;
 `;
 
